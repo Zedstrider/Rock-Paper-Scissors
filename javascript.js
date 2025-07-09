@@ -56,8 +56,8 @@ function playGame()
     {
         const ComputerChoice =getComputerChoice();
         const HumanChoice= getHumanChoice();
-        console.log(HumanChoice);
-        console.log(ComputerChoice);
+        console.log(`You Chose ${HumanChoice}`);
+        console.log(`Computer Chose ${ComputerChoice}`);
         const result=playRound(HumanChoice,ComputerChoice);
         switch(result)
         {
