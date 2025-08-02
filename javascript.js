@@ -2,6 +2,7 @@ let humanScore=0;
 let computerScore=0;
 
 const result=document.createElement("div")
+const current=document.createElement("div");
     
 function getComputerChoice()
 {
@@ -17,7 +18,7 @@ function getComputerChoice()
 function playRound(HumanChoice, ComputerChoice)
 {
     let outcome;
-    if(HumanChoice=="scissor")
+    if(HumanChoice=="scissors")
     {
         if(ComputerChoice=="rock")
             outcome= "You Lose";
@@ -55,35 +56,35 @@ function playRound(HumanChoice, ComputerChoice)
     }
     result.textContent=`${outcome}, Your Score:${humanScore}, Computer Score:${computerScore}`;
 }
-
-function playGame()
-{
     
     document.addEventListener('DOMContentLoaded',()=>
     {
     const btn=document.querySelectorAll("button")
     btn.forEach((bt)=>
     {
-    bt.onclick=()=>{ let choice=bt.textContent;
-    choice=choice.toLowerCase();
+    bt.onclick=()=>{ 
+    const HumanChoice=bt.textContent;
     const ComputerChoice =getComputerChoice();
-    const HumanChoice= choice;
-    console.log(`You Chose ${HumanChoice}`);
-    console.log(`Computer Chose ${ComputerChoice}`);
+    current.textContent=`You Chose ${HumanChoice}, Computer Chose ${ComputerChoice} `
     bt.addEventListener("click",playRound(HumanChoice,ComputerChoice));  
-    document.body.appendChild(result) 
+    document.body.appendChild(result) ;
+    document.body.appendChild(current);
     if(humanScore>=5)
     {
-        return "You Win";
+        alert("You Win")
+        humanScore=0;
+        computerScore=0;
     }
     else if(computerScore>=5)
-        return"You Lose"; 
+    {    
+        alert("You Lose")
+        humanScore=0;
+        computerScore=0;
+    }
     }
 });
 });
-}
 
-let final= playGame();
-alert(final);
+
 
 
